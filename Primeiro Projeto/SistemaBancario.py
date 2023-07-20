@@ -54,7 +54,7 @@ while True:
 
     elif opcao == "e":
         print(" Extrato ".center(20, '-'))
-        print(extrato)
+        print(f'Não foram realizadas movimentações' if not extrato else extrato)
 
     elif opcao == "q":
         print('OBRIGADA POR USAR O BANCO AZEVEDO! VOLTE SEMPRE!')
@@ -62,4 +62,4 @@ while True:
 
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
-    print('-='*40)
+    print('-='*30)
