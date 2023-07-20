@@ -9,23 +9,19 @@ menu = """
 saldo = 0
 limite = 500
 extrato = ""
-contador_extrato = 0
 numero_saques = 0
 LIMITE_SAQUES = 3
 
 while True:
     print(' BANCO AZEVEDO '.center(40, '-'))
-    print(f'SALDO DA CONTA: R${saldo}')
     opcao = input(menu)
 
     if opcao == "d":
         print(" Depósito ".center(20, '-'))
-        print(f'Saldo: R${saldo}')
         deposito = float(input('Informe o valor a ser depositado: R$'))
         if deposito > 0:
             saldo += deposito
-            contador_extrato += 1
-            extrato += (f'{contador_extrato} - Operação: Depósito \nValor: +R${deposito:.2f} \nSaldo:R${saldo:.2f}\n\n')
+            extrato += (f'Depósito: R${deposito:.2f}\n')
             print(f'DEPÓSITO REALIZADO COM SUCESSO!')
         else:
             print('VALOR INVÁLIDO!')
@@ -40,8 +36,7 @@ while True:
                 saldo -= saque
                 LIMITE_SAQUES -= 1
                 print(f'SAQUE REALIZADO COM SUCESSO!')
-                contador_extrato += 1
-                extrato += (f'{contador_extrato} - Operação: Saque \nValor: -R${saque:.2f} \nSaldo:R${saldo:.2f}\n\n')
+                extrato += (f'Saque: R${saque:.2f}\n')
             elif saque > saldo:
                 print(f'Saldo insuficiente!')
             elif LIMITE_SAQUES == 0:
@@ -55,6 +50,7 @@ while True:
     elif opcao == "e":
         print(" Extrato ".center(20, '-'))
         print(f'Não foram realizadas movimentações' if not extrato else extrato)
+        print(f'\nSaldo: R${saldo:.2f}')
 
     elif opcao == "q":
         print('OBRIGADA POR USAR O BANCO AZEVEDO! VOLTE SEMPRE!')
@@ -62,4 +58,4 @@ while True:
 
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
-    print('-='*30)
+    print('-='*20)
